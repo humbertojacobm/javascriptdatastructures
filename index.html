@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script language="javascript" >
+            
+            //how to encapsulate, have private variables, clousure -> IIFE
+            var secuence = (function secuenceIIFE(){
+                var current = 0;
+                return {
+                    getCurrentValue: function(){
+                        return current;
+                    },
+                    getNextValue: function() {
+                        current = current + 1;
+                        return current;
+                    }
+                }
+            }());
+
+            console.log(secuence.getNextValue());
+            console.log(secuence.getNextValue());
+            console.log(secuence.getNextValue());
+
+
+        </script>
+    </body>
+</html>

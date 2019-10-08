@@ -1,0 +1,14 @@
+{
+  "name": "javascriptdatastructures",
+  "version": "1.0.0",
+  "description": "datasctructures",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "datastructures"
+  ],
+  "author": "humberto",
+  "license": "MIT"
+}
