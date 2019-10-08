@@ -5,31 +5,20 @@
     <body>
         <script language="javascript" >
             
-            const singleton = (function(){
-                let instance;
+        class Hero {
+            constructor(name, SpecialAbility){
+                this._name = name;
+                this._SpecialAbility = SpecialAbility;
 
-                function init(){
-                    return {
-                        name: 'Peter',
-                        age: 24,
-                    };
-                }
+                this.getDetails = function(){
+                    return `${this._name} can ${this._SpecialAbility}`;
+                };
+            }
+        }
 
-                return {
-                    getInstance: function(){
-                        if(!instance){
-                            instance = init();
-                        }
-                        return instance;
-                    }
-                }
+        const IronMan = new Hero('Iron Man', 'fly');
 
-            }());
-
-            const instanceA = singleton.getInstance();
-            const instanceB = singleton.getInstance();
-
-            console.log(instanceA === instanceB);
+        console.log(IronMan.getDetails());
         
         </script>
     </body>
