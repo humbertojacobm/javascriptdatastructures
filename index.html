@@ -5,22 +5,35 @@
     <body>
         <script language="javascript" >
             
-            var promise = new Promise(function(resolve, reject){
-              const x = "algo x";
-              const y = "algo x";
-              if ( x != y) {                  
-                  resolve("promise accepted");
-              }else{
-                  reject('promise rejected');
-              }
-            });
+            function resolveAfter2Seconds(x){
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                      resolve(x)
+                    },2000);
+                });
+            }
 
-            promise.then(function(successMessage){
-              console.log(successMessage);
-            }).catch(function(errorMessage){
-              console.log(errorMessage);
-            });
+            async function add1(x) {
+                const a =  await resolveAfter2Seconds(20);
+                const b =  await resolveAfter2Seconds(30);
+                return x+a+b;
+            }
+            console.time('starting add1');
+            add1(10).then(v=>{
+                console.log(v);// print 60 after 4 seconds.
+                console.time('Finishing add1');
+            })
 
+            async function add2(x){
+                const p_a = resolveAfter2Seconds(20);
+                const p_b = resolveAfter2Seconds(30);
+
+                return x + await p_a + await p_b;
+            }
+
+            add2(10).then(v=>{
+                console.log(v);
+            });
 
         </script>
     </body>
