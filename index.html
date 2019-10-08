@@ -5,24 +5,31 @@
     <body>
         <script language="javascript" >
             
-            let instance = null;
+            const singleton = (function(){
+                let instance;
 
-            function User() {
-                if(instance){
-                    return instance;
+                function init(){
+                    return {
+                        name: 'Peter',
+                        age: 24,
+                    };
                 }
 
-                instance = this;
-                this.name = 'Peter';
-                this.age = 25;
+                return {
+                    getInstance: function(){
+                        if(!instance){
+                            instance = init();
+                        }
+                        return instance;
+                    }
+                }
 
-                return instance;
-            }
+            }());
 
-            const user1 = new User();
-            const user2 = new User();
+            const instanceA = singleton.getInstance();
+            const instanceB = singleton.getInstance();
 
-            console.log(user1 === user2);
+            console.log(instanceA === instanceB);
         
         </script>
     </body>
