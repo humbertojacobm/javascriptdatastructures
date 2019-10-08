@@ -5,17 +5,82 @@
     <body>
         <script language="javascript" >
 
-        var txt = "";
-        var numbers = [45,4,9,16,25];
-
-        numbers.forEach(myFunction);
+        var numbers1 = [45,4,9,16,25];
+        var numbers2 = numbers1.map(myFunction);
 
         function myFunction(value, index, array){
-            txt = txt + value + "<br>";
+            return value * 2;
         }
 
-        document.write(txt);
+        console.log(numbers2);
+
+        var over18 = numbers1.filter(myFunction2);
+
+        function myFunction2(value, index, array){
+          return value>18;
+        }        
+        console.log(over18);
+
+        //
+        var sum = numbers1.reduce(myFunction3,100);
+        function myFunction3 (total, value, index, array){
+            return total+value;
+        }
+
+        console.log(sum);
+
+        //
+
+        var sum2 = numbers1.reduceRight(myFunction4,100);
+        function myFunction4 (total, value, index, array){
+            return total+value;
+        }
+
+        console.log(sum2);
+
+        //
+
+        var allOver18 = numbers1.every(myFunction5);
+        function myFunction5 (value, index, array){
+            return value>18;
+        }
+
+        console.log(`todos los elementos pasan de 18 ?: ${this.allOver18}`);
+
+        //
+
+        var someOver18 = numbers1.some(myFunction5);
+
+        console.log(`algunos los elementos pasan de 18 ?: ${this.someOver18}`);
+
+        //
+
+        var fruits = ["Apple", "Orange", "Apple", "Mango"];
+        var a = fruits.indexOf("Apple");
         
+        console.log(`possition of apple is : ${this.a}`);
+
+        //
+
+        var b = fruits.lastIndexOf("Apple");
+        
+        console.log(`possition of apple is : ${this.b}`);
+
+        //
+        var numbers20 = [4, 9, 16, 25, 29];
+        var first12 = numbers20.find(myFunction7);
+
+        function myFunction7(value, index, array) {
+          return value > 18;
+        }
+
+        console.log(first12);
+        //
+        
+        var first13 = numbers20.findIndex(myFunction7);
+        console.log(first13);
+
+
         </script>
     </body>
 </html>
