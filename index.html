@@ -5,23 +5,21 @@
     <body>
         <script language="javascript" >
             
-            //how to encapsulate, have private variables, clousure -> IIFE
-            var secuence = (function secuenceIIFE(){
-                var current = 0;
-                return {
-                    getCurrentValue: function(){
-                        return current;
-                    },
-                    getNextValue: function() {
-                        current = current + 1;
-                        return current;
-                    }
-                }
-            }());
+            var promise = new Promise(function(resolve, reject){
+              const x = "algo x";
+              const y = "algo x";
+              if ( x != y) {                  
+                  resolve("promise accepted");
+              }else{
+                  reject('promise rejected');
+              }
+            });
 
-            console.log(secuence.getNextValue());
-            console.log(secuence.getNextValue());
-            console.log(secuence.getNextValue());
+            promise.then(function(successMessage){
+              console.log(successMessage);
+            }).catch(function(errorMessage){
+              console.log(errorMessage);
+            });
 
 
         </script>
