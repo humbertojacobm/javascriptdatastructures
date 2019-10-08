@@ -5,50 +5,16 @@
     <body>
         <script language="javascript" >
 
-        //context
-            
-        class Commute {
-            travel(transport){
-                return transport.travelTime();
-            }
-        }
-        
-        //strategy
-        class Vehicle{
-            travelTime(){
-                return this._timeTaken;
-            }
+        var txt = "";
+        var numbers = [45,4,9,16,25];
+
+        numbers.forEach(myFunction);
+
+        function myFunction(value, index, array){
+            txt = txt + value + "<br>";
         }
 
-        //concret strategy
-        class Bus extends Vehicle{
-            constructor(){
-                super();
-                this._timeTaken = 10;
-            }
-        }
-
-        class Taxi extends Vehicle{
-            constructor(){
-                super();
-                this._timeTaken = 5;
-
-            }
-        }
-
-        class PersonalCar extends Vehicle{
-            constructor(){
-                super();
-                this._timeTaken = 3;
-            }
-        }
-
-        // usage
-
-        const commute = new Commute();
-
-        console.log(commute.travel(new Taxi()));
-        console.log(commute.travel(new Bus()));
+        document.write(txt);
         
         </script>
     </body>
