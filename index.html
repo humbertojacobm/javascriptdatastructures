@@ -5,36 +5,25 @@
     <body>
         <script language="javascript" >
             
-            function resolveAfter2Seconds(x){
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                      resolve(x)
-                    },2000);
-                });
+            let instance = null;
+
+            function User() {
+                if(instance){
+                    return instance;
+                }
+
+                instance = this;
+                this.name = 'Peter';
+                this.age = 25;
+
+                return instance;
             }
 
-            async function add1(x) {
-                const a =  await resolveAfter2Seconds(20);
-                const b =  await resolveAfter2Seconds(30);
-                return x+a+b;
-            }
-            console.time('starting add1');
-            add1(10).then(v=>{
-                console.log(v);// print 60 after 4 seconds.
-                console.time('Finishing add1');
-            })
+            const user1 = new User();
+            const user2 = new User();
 
-            async function add2(x){
-                const p_a = resolveAfter2Seconds(20);
-                const p_b = resolveAfter2Seconds(30);
-
-                return x + await p_a + await p_b;
-            }
-
-            add2(10).then(v=>{
-                console.log(v);
-            });
-
+            console.log(user1 === user2);
+        
         </script>
     </body>
 </html>
