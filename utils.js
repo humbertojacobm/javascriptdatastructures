@@ -1,51 +1,23 @@
 
-var twoSum = function(nums, target) {
-    //2, 7, 11, 15
-    //found
+var reverse = function(x) {
     
-        //--1
-        // 2
-        // 7,11,15
-        //found
-    
-        //--2
-        //7
-        //11,15
-        //found
-    
-        //--3
-        //11
-        //15
-        //found
-    
-        //--4    
-        //15
-        //
-        //found
-    
-    //return found
-    let first;
-    let targetIndex = -1;
-    let i=0;
-    
-    while (nums.length>0)
-        {
-            first = nums.shift();            
-            var targetNumbs = nums.forEach(function (value, index, array){
-                console.log(value);
-                if (parseInt(value) + parseInt(first) == parseInt(target)){
-                    targetIndex = index+1;                    
-                }                
-            });
-            
-            if (targetIndex != -1){
-                break;
-            }
-            i++;            
-        }
-    
-    return [i,targetIndex]
-        
+    var nums = x.toString().split('');
+    var sign;
+    var last;
+    var finalNumber = 0;
+    if (nums[0] == "-" || nums[0] == "+"){
+        sign = nums.shift();
+    }    
+    nums.reverse();
+    if (parseInt(nums[0]) == 0){
+        nums.shift();
+    }
+    finalNumber= parseInt((sign == "-" ? sign : "")+(nums.join('').toString()));
+    //return finalNumber>=Number.MIN_SAFE_INTEGER && finalNumber<=Number.MAX_SAFE_INTEGER ? finalNumber : 0;
+    return finalNumber>=-1*Math.pow(2,31) && finalNumber<=(Math.pow(2,31)-1) ? finalNumber : 0;
 };
 
-twoSum([2,7,11,15],9);
+console.log(reverse(123));
+console.log(reverse(-123));
+console.log(reverse(120));
+console.log(reverse(1534236469));
